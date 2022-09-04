@@ -1,0 +1,201 @@
+﻿<Window
+    x:Class="WpfCustomWindow.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfCustomWindow"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    Background="{x:Null}"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="-1" />
+    </WindowChrome.WindowChrome>
+    <Window.Template>
+        <ControlTemplate TargetType="Window">
+            <Grid x:Name="LayoutRoot">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Border
+                    x:Name="bdrWindowTitle"
+                    Margin="0,10,0,0"
+                    Background="White"
+                    BorderBrush="Black"
+                    BorderThickness="2,2,2,0"
+                    CornerRadius="10,10,0,0"
+                    MouseLeftButtonDown="bdrWindowTitle_MouseLeftButtonDown">
+                    <Grid x:Name="grdTitleContent" Margin="10,10,10,0">
+                        <StackPanel
+                            x:Name="stkTitle"
+                            Margin="0,-20,0,0"
+                            HorizontalAlignment="Left"
+                            Orientation="Horizontal"
+                            d:LayoutOverrides="Height">
+                            <TextBlock
+                                x:Name="textBlock"
+                                Margin="0,-20,0,-5"
+                                VerticalAlignment="Bottom"
+                                FontFamily="Arial Black"
+                                FontSize="48"
+                                FontWeight="Bold"
+                                Foreground="White"
+                                Text="WPF"
+                                TextWrapping="Wrap"
+                                d:LayoutOverrides="Width">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect
+                                        BlurRadius="2"
+                                        Opacity="0.5"
+                                        ShadowDepth="3" />
+                                </TextBlock.Effect>
+                            </TextBlock>
+                            <TextBlock
+                                VerticalAlignment="Bottom"
+                                FontFamily="Arial Black"
+                                FontSize="26.667"
+                                FontWeight="Bold"
+                                Text="Custom Window"
+                                TextWrapping="Wrap">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect
+                                        BlurRadius="2"
+                                        Opacity="0.5"
+                                        ShadowDepth="3" />
+                                </TextBlock.Effect>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel
+                            x:Name="stkButtonBar"
+                            Margin="0,-11,0,5"
+                            HorizontalAlignment="Right"
+                            Orientation="Horizontal">
+                            <Button
+                                x:Name="btnMinimize"
+                                Width="32"
+                                Margin="0,0,0,0"
+                                Click="btnMinimize_Click"
+                                Content="🗕︎" />
+                            <Button
+                                x:Name="btnMaximize"
+                                Width="32"
+                                Margin="2,0,0,0"
+                                Click="btnMaximize_Click"
+                                Content="🗖︎" />
+                            <Button
+                                x:Name="btnClose"
+                                Width="32"
+                                Margin="2,0,0,0"
+                                Click="btnClose_Click"
+                                Content="🗙︎" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Border
+                    x:Name="bdrWindowContent"
+                    Grid.Row="1"
+                    Background="White"
+                    BorderBrush="Black"
+                    BorderThickness="2,0,2,2"
+                    CornerRadius="0,0,10,10">
+                    <ContentPresenter Margin="12" ClipToBounds="True" />
+                </Border>
+                <Thumb
+                    x:Name="thumbTop"
+                    Grid.RowSpan="2"
+                    Height="5"
+                    Margin="15,10,15,0"
+                    VerticalAlignment="Top"
+                    Background="Red"
+                    Cursor="SizeNS"
+                    Opacity="0"
+                    PreviewMouseLeftButtonDown="thumb_PreviewMouseLeftButtonDown" />
+                <Thumb
+                    x:Name="thumbTopRight"
+                    Grid.RowSpan="2"
+                    Width="15"
+                    Height="15"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Background="Green"
+                    Cursor="SizeNESW"
+                    Opacity="0"
+                    PreviewMouseLeftButtonDown="thumb_PreviewMouseLeftButtonDown" />
+                <Thumb
+                    x:Name="thumbRight"
+                    Grid.RowSpan="2"
+                    Width="5"
+                    Margin="0,25,0,15"
+                    HorizontalAlignment="Right"
+                    Background="Red"
+                    Cursor="SizeWE"
+                    Opacity="0"
+                    PreviewMouseLeftButtonDown="thumb_PreviewMouseLeftButtonDown" />
+                <Thumb
+                    x:Name="thumbBottomRight"
+                    Grid.RowSpan="2"
+                    Width="15"
+                    Height="15"
+                    Margin="0"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                    Background="Green"
+                    Cursor="SizeNWSE"
+                    Opacity="0"
+                    PreviewMouseLeftButtonDown="thumb_PreviewMouseLeftButtonDown" />
+                <Thumb
+                    x:Name="thumbBottom"
+                    Grid.RowSpan="2"
+                    Height="5"
+                    Margin="15,0"
+                    VerticalAlignment="Bottom"
+                    Background="Red"
+                    Cursor="SizeNS"
+                    Opacity="0"
+                    PreviewMouseLeftButtonDown="thumb_PreviewMouseLeftButtonDown" />
+                <Thumb
+                    x:Name="thumbBottomLeft"
+                    Grid.RowSpan="2"
+                    Width="15"
+                    Height="15"
+                    Margin="0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Background="Green"
+                    Cursor="SizeNESW"
+                    Opacity="0"
+                    PreviewMouseLeftButtonDown="thumb_PreviewMouseLeftButtonDown" />
+                <Thumb
+                    x:Name="thumbLeft"
+                    Grid.RowSpan="2"
+                    Width="5"
+                    Margin="0,25,0,15"
+                    HorizontalAlignment="Left"
+                    Background="Red"
+                    Cursor="SizeWE"
+                    Opacity="0"
+                    PreviewMouseLeftButtonDown="thumb_PreviewMouseLeftButtonDown" />
+                <Thumb
+                    x:Name="thumbTopLeft"
+                    Grid.RowSpan="2"
+                    Width="15"
+                    Height="15"
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Background="Green"
+                    Cursor="SizeNWSE"
+                    Opacity="0"
+                    PreviewMouseLeftButtonDown="thumb_PreviewMouseLeftButtonDown" />
+            </Grid>
+        </ControlTemplate>
+    </Window.Template>
+    <TextBlock>Test</TextBlock>
+</Window>
